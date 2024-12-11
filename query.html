@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captura de Headers y Query Params</title>
+</head>
+<body>
+  <h1>Captura de Headers y Query Params</h1>
+  <p>Esta página captura los parámetros de la URL y los headers enviados al cargar la página.</p>
+
+  <h2>Query Parameters</h2>
+  <ul id="queryParamsList">
+    <!-- Aquí se mostrarán los parámetros de la URL -->
+  </ul>
+
+  <h2>Headers</h2>
+  <p>Los headers no pueden ser capturados directamente desde el navegador por razones de seguridad, pero puedes enviar esta información desde el backend a esta página.</p>
+
+  <script>
+    // Captura los parámetros de la URL
+    const queryParams = new URLSearchParams(window.location.search);
+    const queryParamsList = document.getElementById('queryParamsList');
+
+    // Itera sobre los parámetros y los muestra en la página
+    queryParams.forEach((value, key) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${key}: ${value}`;
+      queryParamsList.appendChild(listItem);
+    });
+
+    // Nota: Los headers no se pueden capturar directamente desde el navegador
+    console.log('Para capturar headers, configura tu servidor para enviarlos como parte del contenido visible.');
+  </script>
+</body>
+</html>
